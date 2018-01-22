@@ -50,6 +50,8 @@ The above steps are repeated in the "train" directory, resulting in a data.frame
 
 The grep function, with the appropriate regular expressions, is used to find the column indices in alldata with names containing either "mean()" or "std()".  These columns and the "subject" and "activity" columns are column binded to create the meanstddata data.frame.  Variable names are cleaned up to remove "()" and "-".  meanstddata meets the requirements of steps 1-4 described in the Overview.
 
+It is important to note that here I assume that only variables containing "mean()" are desired.  There are also variables containing "meanFreq()" that may be relelvant depending on how the project description is interpreted.  
+
 ## 4 - Creating tidy data set with the average of each variable for each activity and each subject
 
 The dplyr package is used to group meanstddata by activity and subject, and then the summarize_at function is used to find the mean of each column, other than the activity and subject columns, for each activity/subject combination.  The resulting data.frame (tbl_df) is called meandata.  For clarity, "Avg" is appended to the beginning of each column name of meandata.
